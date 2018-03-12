@@ -1,4 +1,4 @@
-Terraform Provider to generate Terraform State container Outputs only
+Terraform Provider to generate tfstate with outputs only
 ==================
 
 [![Build Status](https://travis-ci.org/sl1pm4t/terraform-provider-tfstate.svg?branch=master)](https://travis-ci.org/sl1pm4t/terraform-provider-tfstate)
