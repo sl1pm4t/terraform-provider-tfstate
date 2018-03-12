@@ -19,9 +19,12 @@ Use Terraform [interpolation functions](https://www.terraform.io/docs/configurat
 Using the provider
 ----------------------
 
+#### tfstate_outputs resource
+
 **Basic Example**
 
 ```hcl
+// generate outputs 
 resource tfstate_outputs "test" {
   output {
     name  = "foo"
@@ -34,13 +37,16 @@ resource tfstate_outputs "test" {
   }
 }
 
+// write the tfstate to file, so it can be read from another Terraform module/config
 resource "local_file" "state_outputs" {
   content  = "${tfstate_outputs.test.json}"
   filename = "${path.module}/terraform.tfout"
 }
+```
 
-# In another module / config:
+*In another module / config*
 
+```hcl
 data "terraform_remote_state" "upstream" {
   backend = "local"
 
@@ -54,6 +60,17 @@ output "upstream_foo" {
 }
 ```
 
+#### Argument Reference
+
+* `output` - a list of output blocks with the following structure:
+  * `name` - the name of the output
+  * `value` - the output value
+  * `sensitive` - (OPTIONAL) does this output contain sensitive data. *NOTE* this flag has no impact on the behaviour of this provider, but the sensitive flag may be used downstream
+
+#### Attribute Reference
+
+* `json` - the generated tfstate in JSON format
+* `serial` - an auto incrementing integer representing the version of the resource
 
 Development Requirements
 ----------------------------
