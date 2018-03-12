@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "332graBIqOD145JST3YxIQ/o+Ws=",
+			"path": "github.com/rocksolidlabs/jsonq",
+			"revision": "e86fecc9e9eddb66ab1b36174513e334a2a57d8d",
+			"revisionTime": "2017-07-05T16:48:19Z"
+		}
+	],
+	"rootPath": "github.com/sl1pm4t/terraform-provider-tfstate"
+}
