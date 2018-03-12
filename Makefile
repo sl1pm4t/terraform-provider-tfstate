@@ -1,5 +1,6 @@
 TEST?=$$(go list ./... |grep -v 'vendor')
 GOFMT_FILES?=$$(find . -name '*.go' |grep -v vendor)
+TARGETS=darwin linux windows
 
 default: build
 
@@ -26,6 +27,17 @@ vet:
 fmt:
 	gofmt -w $(GOFMT_FILES)
 
+fmtcheck:
+	@echo "==> Checking that code complies with gofmt requirements..." ; \
+	files=$$(find . -name '*.go' ) ; \
+	gofmt_files=`gofmt -l $$files`; \
+	if [ -n "$$gofmt_files" ]; then \
+		echo 'gofmt needs running on the following files:'; \
+		echo "$$gofmt_files"; \
+		echo "You can use the command: \`make fmt\` to reformat code."; \
+		exit 1; \
+	fi
+
 vendor-status:
 	@govendor status
 
@@ -37,5 +49,11 @@ test-compile:
 	fi
 	go test -c $(TEST) $(TESTARGS)
 
-.PHONY: build test testacc vet fmt errcheck vendor-status test-compile
+targets: $(TARGETS)
+
+$(TARGETS):
+	GOOS=$@ GOARCH=amd64 go build -o "dist/$@/terraform-provider-tfstate_${TRAVIS_TAG}_x4"
+	zip -j dist/terraform-provider-tfstate_${TRAVIS_TAG}_$@_amd64.zip dist/$@/terraform-provider-tfstate_${TRAVIS_TAG}_x4
+
+.PHONY: build test testacc vet fmt errcheck vendor-status test-compile targets $(TARGETS)
 
