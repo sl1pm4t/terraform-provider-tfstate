@@ -18,5 +18,8 @@ deploy:
   api_key:
     secure: jCJh6WRiYp0+F3KQxz+5ROmbeSShblbm55md2Kf2pHJ7x7ntbx8ro/OwN14G8/DPM1mLSiMkMjLJjTCMUpLKr0gmgEcCHb5VLZHvJqaCTMRNnqSkDSFzk0dLOQEHw/7r044K5Tnes2quPeP25wDk60i+vfo2slUdUMpmOJDOBEu8MOiHXaJiuJrDY0vRkJepW0MHGjQSQ+oyoSkcj7LRT3FTzVn6aTPKhrDdUl9DzsXhIk7c4/6Bn4vmlYmM6YkPp87opUYBTXBn2lPpHgFj13aPJw1udKcdQve0zN0EYCvxZBiEvh8zwH7Tng+5ZnW4JC6keCQOwVnJ9S3KpteuxDQ112/cTzDVTL7qF2AV6ftkam5jgeMUkTI/gtiQUdl82DyFuwwSZLYt0BmUxpfcqgwYgvbYFF5Ib3l9xF9uSnsFxAPgTl155pJI93/0n+OoXOV4X0h7lLs0qTCCl8wlea8BAkdD7bqg21kK37N5u2hx9JaALumNzFJlPIZPbsmix3lVc0nkRYsyufgn9AdDk0DIkRh3D9bT1wWrdWR94kXrdMMEJJIdbMBZBEu51yt3aoGWm0kh+RrhS+i0Itltc7CyS+dzCT87ooIiJIKXFDI/tXSv/tACMFw7Shz5RbB2ShP/NLbnxnFmg3yF7n1HKDaRoCUW3/NW/N4oLNF52Ds=
   file: dist/*.zip
+  file_glob: true
+  skip_cleanup: true
   on:
     repo: sl1pm4t/terraform-provider-tfstate
+    tags: true 
