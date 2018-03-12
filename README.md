@@ -1,6 +1,8 @@
 Terraform Provider to generate Terraform State container Outputs only
 ==================
 
+[![Build Status](https://travis-ci.org/sl1pm4t/terraform-provider-tfstate.svg?branch=master)](https://travis-ci.org/sl1pm4t/terraform-provider-tfstate)
+
 A logical provider that can be used to generate a pseudo Terraform State file, containing `outputs` only.
 
 **Why?**
